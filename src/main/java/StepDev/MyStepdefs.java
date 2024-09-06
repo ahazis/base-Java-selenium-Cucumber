@@ -7,12 +7,13 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
+
 
 public class MyStepdefs {
     WebDriver driver;
     LoginPage loginPage;
     //----------------------------------------------------------------------------------------------------------------------Success login
+    //----------------------------------------------------------------------------------------------------------------------
     @Given("^I am on the login page$")
     public void Iamontheloginpage() {
         System.setProperty("webdriver.chrome.driver", "C:/Program Files/ChromeDriver/new/chromedriver-win64/chromedriver.exe");
@@ -32,7 +33,8 @@ public class MyStepdefs {
         Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/inventory.html");
         driver.quit();
     }
-    //    ------------------------------------------------------------------------------------------------------Failed login
+    //----------------------------------------------------------------------------------------------------------------------Invalid login
+    //----------------------------------------------------------------------------------------------------------------------
     @When("^I enter invalid username and password$")
     public void Ienterinvalidusernameandpassword() {
         loginPage.setUserName("standard_user");
@@ -44,7 +46,9 @@ public class MyStepdefs {
         Assert.assertEquals(loginPage.getErrorMessageWrong(), "Epic sadface: Username and password do not match any user in this service");
         driver.quit();
     }
-//    ------------------------------------------------------------------------------------------------------------Null login
+    //----------------------------------------------------------------------------------------------------------------------Null login
+    //----------------------------------------------------------------------------------------------------------------------
+
     @When("^I click Login Button$")
     public void IclickLoginButton() {
         loginPage.clickLogin();
